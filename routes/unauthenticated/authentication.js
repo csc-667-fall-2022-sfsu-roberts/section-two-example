@@ -9,4 +9,8 @@ router.get("/login", (_request, response) => {
   response.render("unauthenticated/login", {});
 });
 
+router.get("/register", (_request, response) => {
+  response.render("unauthenticated/register", {});
+});
+
 module.exports = router;
