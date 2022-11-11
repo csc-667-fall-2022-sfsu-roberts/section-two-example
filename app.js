@@ -8,6 +8,9 @@ if (process.env.NODE_ENV === "development") {
   require("dotenv").config();
 }
 
+const sessionInstance = require("./app-config/sessions");
+const protect = require("./app-config/protect");
+
 const homeRouter = require("./routes/unauthenticated/index");
 const authenticationRouter = require("./routes/unauthenticated/authentication");
 const lobbyRouter = require("./routes/authenticated/lobby");
@@ -26,11 +29,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(sessionInstance);
 
 app.use("/", homeRouter);
-app.use("/", authenticationRouter);
-app.use("/lobby", lobbyRouter);
-app.use("/games", gamesRouter);
+app.use("/auth", authenticationRouter);
+app.use("/lobby", protect, lobbyRouter);
+app.use("/games", protect, gamesRouter);
 app.use("/tests", testsRouter);
 
 // catch 404 and forward to error handler

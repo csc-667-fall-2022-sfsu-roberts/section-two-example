@@ -1,9 +1,11 @@
-[] Set up express to support basic user authentication
-[] Add express-session
-[] get/post login/register
-[] integrate db
-[] encrypt password in db
+[X] User migration
+[X] forms for login & registration
+[X] get/post login/register
+[X] Add express-session
+[X] integrate db
+[X] encrypt password in db
 [] protect pages that require auth
+
 [] socketio
 [] socketio authentication
 [] post chat/:id (0: lobby, otherwise game room)

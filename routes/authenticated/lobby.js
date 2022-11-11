@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (_request, response) => {
-  response.render("authenticated/lobby", {});
+router.get("/", (request, response) => {
+  const { username, user_id } = request.session;
+
+  response.render("authenticated/lobby", { username, user_id });
 });
 
 module.exports = router;
