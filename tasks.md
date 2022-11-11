@@ -1,10 +1,14 @@
+### User authentication
+
 [X] User migration
 [X] forms for login & registration
 [X] get/post login/register
 [X] Add express-session
 [X] integrate db
 [X] encrypt password in db
-[] protect pages that require auth
+[X] protect pages that require auth
+
+### Socket IO
 
 [] socketio
 [] socketio authentication
