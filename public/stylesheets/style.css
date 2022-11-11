@@ -1,8 +1,66 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.player-hand {
+  position: relative;
 }
 
-a {
-  color: #00B7FF;
+.card {
+  position: absolute;
+  background-image: url("/images/cards.png");
+  height: 258px;
+  width: 176px;
+}
+
+.card:nth-child(2) {
+  left: 30px;
+}
+
+.card:nth-child(3) {
+  left: 60px;
+}
+
+.card:nth-child(4) {
+  left: 90px;
+}
+
+.card:nth-child(5) {
+  left: 120px;
+}
+
+.red {
+  background-position-y: 0px;
+}
+
+.blue {
+    background-position-y: -285px;
+}
+
+.yellow {
+  background-position-y: -570px;
+}
+
+.green {
+  background-position-y: -855px;
+}
+
+.four {
+  background-position-x: -800px;
+}
+
+.nine {
+  background-position-x: -1800px;
+}
+
+.three {
+  background-position-x: -600px;
+}
+
+.two {
+  background-position-x: -400px;
+}
+
+.five {
+  background-position-x: -1000px;
+}
+
+.eight {
+  background-position-x: -1600px;
 }
