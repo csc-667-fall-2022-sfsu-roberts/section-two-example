@@ -10,7 +10,7 @@
 
 ### Socket IO
 
-[] socketio
-[] socketio authentication
-[] post chat/:id (0: lobby, otherwise game room)
-[] listen for messages and update ui
+[X] socketio
+[X] socketio authentication
+[X] post chat/:id (0: lobby, otherwise game room)
+[~] listen for messages and update ui
