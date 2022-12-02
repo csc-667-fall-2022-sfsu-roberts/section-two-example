@@ -19,6 +19,9 @@ const INITIALIZE_CARD =
 
 const GET_DECK = "SELECT * FROM cards";
 
+const COUNT_USERS_IN_GAME =
+  "SELECT COUNT(*) FROM game_users WHERE game_id = ${game_id}";
+
 module.exports = {
   CREATE_SQL,
   ADD_USER_SQL,
@@ -27,4 +30,5 @@ module.exports = {
   JOINABLE_GAMES,
   INITIALIZE_CARD,
   GET_DECK,
+  COUNT_USERS_IN_GAME,
 };
