@@ -14,10 +14,17 @@ const JOINABLE_GAMES =
   "SELECT id FROM games LEFT JOIN game_users ON games.id = game_users.game_id WHERE game_users.user_id=${user_id}" +
   ")";
 
+const INITIALIZE_CARD =
+  "INSERT INTO game_cards (game_id, card_id) VALUES (${game_id}, ${card_id})";
+
+const GET_DECK = "SELECT * FROM cards";
+
 module.exports = {
   CREATE_SQL,
   ADD_USER_SQL,
   CHECK_ACTIVE_GAMES,
   ACTIVE_GAMES,
   JOINABLE_GAMES,
+  INITIALIZE_CARD,
+  GET_DECK,
 };

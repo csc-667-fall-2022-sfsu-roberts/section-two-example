@@ -6,7 +6,7 @@ Task list:
 - [x] Cards
 - [x] Game Cards
 
-[] Create game instance
+[X] Create game instance
 
 - [x] Button in lobby to create an instance
   - [x] Add entry into games table
@@ -16,6 +16,8 @@ Task list:
   - [x] games I'm in
   - [x] games I can join
 
-[] Join a game
+[X] Join a game
+
+[] Create valid initial game state
 
 [] Turns?
