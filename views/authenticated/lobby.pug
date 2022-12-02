@@ -3,6 +3,12 @@ extends layout
 block content
   h1 Lobby page (#{username} #{user_id})
 
+  template#message-content
+    .chat-message
+      span.username
+      span.message
+      span.timestamp
+
   #chat
     #messages
     div
