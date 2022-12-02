@@ -18,6 +18,6 @@ Task list:
 
 [X] Join a game
 
-[] Create valid initial game state
+[X] Create valid initial game state
 
 [] Turns?
