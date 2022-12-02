@@ -12,8 +12,10 @@ Task list:
   - [x] Add entry into games table
   - [x] Add entry into game_users table
 - [x] Redirect to the new game
-- [] Game list in lobby
-  - [] games I'm in
-  - [] games I can join
+- [x] Game list in lobby
+  - [x] games I'm in
+  - [x] games I can join
+
+[] Join a game
 
 [] Turns?

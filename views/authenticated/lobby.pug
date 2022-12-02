@@ -22,7 +22,7 @@ block content
       ul
         each game in games.joinable
           li
-            form(action=`/games/${game.id}/join`)
+            form(action=`/games/${game.id}/join` method="post")
               button(type="submit") Join #{game.title || game.id}
 
   template#message-content
