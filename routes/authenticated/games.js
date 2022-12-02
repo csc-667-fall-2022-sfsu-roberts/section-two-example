@@ -1,6 +1,22 @@
 const express = require("express");
 const router = express.Router();
 
+const Games = require("../../db/games");
+
+router.post("/create", (request, response) => {
+  const { user_id } = request.session;
+  const { title } = request.body;
+
+  Games.create(user_id, title)
+    .then(({ game_id }) => {
+      response.redirect(`/games/${game_id}`);
+    })
+    .catch((error) => {
+      console.log(error);
+      response.status(500).send();
+    });
+});
+
 router.get("/:id", (request, response) => {
   const { id } = request.params;
 

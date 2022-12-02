@@ -3,6 +3,12 @@ extends layout
 block content
   h1 Lobby page (#{username} #{user_id})
 
+  #create-game
+    form(action="/games/create" method="post")
+      label(for="title")
+      input(type="text" name="title")
+      button(type="submit") Create Game
+
   template#message-content
     .chat-message
       span.username
