@@ -8,10 +8,12 @@ Task list:
 
 [] Create game instance
 
-- [] Button in lobby to create an instance
-  - Add entry into games table
-  - Add entry into game_users table
-- [] Redirect to the new game
+- [x] Button in lobby to create an instance
+  - [x] Add entry into games table
+  - [x] Add entry into game_users table
+- [x] Redirect to the new game
 - [] Game list in lobby
+  - [] games I'm in
+  - [] games I can join
 
 [] Turns?

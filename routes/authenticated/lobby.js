@@ -1,10 +1,17 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (request, response) => {
-  const { username, user_id } = request.session;
+const Games = require("../../db/games");
 
-  response.render("authenticated/lobby", { username, user_id });
+router.get("/", (request, response) => {
+  const { user_id } = request.session;
+
+  Games.all(user_id)
+    .then((games) => response.render("authenticated/lobby", { games }))
+    .catch((error) => {
+      console.log(error);
+      response.status(500).send();
+    });
 });
 
 module.exports = router;

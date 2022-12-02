@@ -1,4 +1,4 @@
-const db = require("./index");
+const db = require("../index");
 
 const CREATE_SQL = "INSERT INTO games (title) VALUES (${title}) RETURNING id";
 
@@ -11,4 +11,4 @@ const create = (user_id, title = "Game") => {
     .then(({ id }) => db.one(ADD_USER_SQL, { game_id: id, user_id }));
 };
 
-module.exports = { create };
+module.exports = create;
