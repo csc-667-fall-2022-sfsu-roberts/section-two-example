@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./bin/www & npm run scss",
+    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./bin/www & npm run scss & NODE_ENV=development npm run fe:build",
     "scss": "sass --watch scss/main.scss public/stylesheets/main.css",
+    "fe:build": "node ./front-end/build.js",
     "db:create:migration": "npx sequelize migration:generate --name ",
     "db:migrate": "npx sequelize db:migrate",
     "db:rollback": "npx sequelize db:migrate:undo",
-    "postinstall": "npx sequelize db:migrate & sass scss/main.scss public/stylesheets/main.css"
+    "postinstall": "npx sequelize db:migrate & sass scss/main.scss public/stylesheets/main.css & node ./front-end/build.js"
   },
   "dependencies": {
     "@types/sequelize": "^4.28.14",
@@ -18,6 +19,7 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
+    "esbuild": "^0.15.17",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
     "http-errors": "~1.6.3",
@@ -28,7 +30,8 @@
     "sass": "^1.56.1",
     "sequelize": "^6.24.0",
     "sequelize-cli": "^6.5.1",
-    "socket.io": "^4.5.3"
+    "socket.io": "^4.5.3",
+    "socket.io-client": "^4.5.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
