@@ -1,8 +1,58 @@
 extends layout
 
 block content
-  h1 Game page (authenticated)
-  h2 Game ID #{id}
+  #waiting-message.row
+    .col
+      .text-center
+        .spinner-border(role="status")
+        p Waiting for all users to join #{joined_count} out of #{start_count}
+  #game.hidden
+    .player.player-minus-2
+      .username User -2
+      .player-hand
+          .uno-card.special.zero
+          .uno-card.special.zero
+          .uno-card.special.zero
+          .uno-card.special.zero
+          .uno-card.special.zero
+          .uno-card.special.zero
+          .uno-card.special.zero
+    .player.player-minus-1
+      .username User -1
+      .player-hand
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+    .draw-pile
+      .uno-card.special.zero
+    .discard-pile
+      .uno-card.red.five
+    .player.player-minus-3
+      .player-hand
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+        .uno-card.special.zero
+      .username User -3
+    .player.player-current
+      .username Current user
+      .player-hand
+        .uno-card.special.one
+        .uno-card.blue.three
+        .uno-card.blue.seven
+        .uno-card.red.two
+        .uno-card.green.four
+        .uno-card.green.nine
+        .uno-card.green.twelve
+    .chat
+      p Chat
 
-  #game
-    p Waiting for all users to join #{joined_count} out of #{start_count}
+block scripts
+  script(src="/javascripts/games.js")

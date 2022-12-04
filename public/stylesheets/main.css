@@ -1,0 +1,144 @@
+#game {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: ". player-minus-2 player-minus-2. chat" "player-minus-1 draw-pile discard-pile player-minus-3 chat" ". player-current player-current. chat";
+}
+
+.player {
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+}
+.player .username {
+  text-align: center;
+}
+.player .player-hand .uno-card {
+  width: 18.8888888889px;
+}
+.player .player-hand .uno-card:last-child {
+  width: 56.6666666667px;
+}
+
+.chat {
+  grid-area: chat;
+}
+
+.player-hand {
+  display: flex;
+}
+
+.player-current {
+  grid-area: player-current;
+}
+
+.player-minus-1 {
+  grid-area: player-minus-1;
+  transform: rotate(90deg);
+}
+
+.player-minus-2 {
+  grid-area: player-minus-2;
+  transform: rotate(180deg);
+}
+
+.player-minus-3 {
+  grid-area: player-minus-3;
+  transform: rotate(-90deg);
+}
+
+.draw-pile {
+  grid-area: draw-pile;
+  justify-self: end;
+  padding-right: 2px;
+  align-self: center;
+}
+
+.discard-pile {
+  grid-area: discard-pile;
+  justify-self: start;
+  padding-left: 2px;
+  align-self: center;
+}
+
+.uno-card {
+  background-image: url("/images/cards.png");
+  background-size: 857.3333333333px 465.6666666667px;
+  height: 85.6666666667px;
+  width: 56.6666666667px;
+}
+
+.red {
+  background-position-y: -0px;
+}
+
+.blue {
+  background-position-y: -95px;
+}
+
+.yellow {
+  background-position-y: -190px;
+}
+
+.green {
+  background-position-y: -285px;
+}
+
+.special {
+  background-position-y: -380px;
+}
+
+.zero {
+  background-position-x: -0px;
+}
+
+.one {
+  background-position-x: -67px;
+}
+
+.two {
+  background-position-x: -134px;
+}
+
+.three {
+  background-position-x: -201px;
+}
+
+.four {
+  background-position-x: -268px;
+}
+
+.five {
+  background-position-x: -335px;
+}
+
+.six {
+  background-position-x: -402px;
+}
+
+.seven {
+  background-position-x: -469px;
+}
+
+.eight {
+  background-position-x: -536px;
+}
+
+.nine {
+  background-position-x: -603px;
+}
+
+.skip {
+  background-position-x: -670px;
+}
+
+.reverse {
+  background-position-x: -737px;
+}
+
+.draw-two {
+  background-position-x: -804px;
+}
+
+/*# sourceMappingURL=main.css.map */

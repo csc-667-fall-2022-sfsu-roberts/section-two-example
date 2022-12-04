@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Games = require("../../db/games");
 const startGame = require("../../game-logic/start-game");
-const { PLAYERS_NEEDED } = require("../../config/games");
+const { PLAYERS_NEEDED, EVENTS } = require("../../config/games");
 
 router.post("/create", (request, response) => {
   const { user_id } = request.session;
@@ -24,7 +24,7 @@ router.post("/:id/join", (request, response) => {
   const { user_id } = request.session;
 
   Games.join(game_id, user_id)
-    .then(() => {
+    .then(({ user_ids, count }) => {
       response.redirect(`/games/${game_id}`);
     })
     .catch((error) => {
@@ -84,6 +84,7 @@ router.get("/:id", (request, response) => {
         id,
         joined_count: count,
         start_count: PLAYERS_NEEDED,
+        starting: PLAYERS_NEEDED === count,
       });
 
       if (count === PLAYERS_NEEDED) {

@@ -1,39 +1,54 @@
 extends layout
 
 block content
-  h1 Lobby page
+  .row
+    h1 Lobby
 
-  #game-lists
-    #create-game
-      form(action="/games/create" method="post")
-        label(for="title")
-        input(type="text" name="title")
-        button(type="submit") Create Game
+  .row
+    .col-md-4
+      #joinable-game-list.card
+          .card-header
+            h3.card-title Joinable games
+          ul.list-group.list-group-flush
+            each game in games.joinable
+              li.list-group-item
+                form(action=`/games/${game.id}/join` method="post")
+                  button.btn.btn-secondary(type="submit") Join #{game.title || game.id}
+            else
+              li.list-group-item No joinable games - create a game!
+      #create-game
+        form.row.row-cols-lg-auto.g-3.align-items-center(action="/games/create" method="post")
+          .col-12
+            input.form-control(type="text" name="title" placeholder="Game title")
+          .col-12
+            button.btn.btn-secondary(type="submit") Create Game
 
-    h2 Active games
-    #active-game-list
-      ul
-        each game in games.active
-          li
-            a(href=`/games/${game.id}`)= game.title
+    .col-md-4
+        #active-game-list.card
+          .card-header
+            h3.card-title Active games
+          ul.list-group.list-group-flush
+            each game in games.active
+              li.list-group-item
+                a.card-link(href=`/games/${game.id}`)= game.title
+            else
+              li.list-group-item No active games - create or join a game!
 
-    h2 Joinable games
-    #joinable-game-list
-      ul
-        each game in games.joinable
-          li
-            form(action=`/games/${game.id}/join` method="post")
-              button(type="submit") Join #{game.title || game.id}
+    .col-md-4
+        #chat.card
+          .card-header
+            h3.card-title Chat
+          ul#messages.list-group.list-group-flush.overflow-auto(style="height: 300px;")
+          .card-footer
+            .input-group
+                input.form-control#message(type="text")
+                button.form-control.btn.btn-secondary#send-message Send
 
   template#message-content
-    .chat-message
-      span.username
-      span.message
-      span.timestamp
+    li.chat-message.list-group-item.d-flex.justify-content-between.gap-2
+      img.rounded.username(height="20" width="20")
+      span.message.flex-grow-1
+      span.timestamp.text-muted.fst-italic
 
-  #chat
-    h2 Chat
-    #messages
-    div
-      input#message(type="text")
-
+block scripts
+  script(src="/javascripts/lobby-chat.js")
