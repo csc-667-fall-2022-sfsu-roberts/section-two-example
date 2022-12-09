@@ -20,4 +20,7 @@ Task list:
 
 [X] Create valid initial game state
 
-[] Turns?
+12-8
+
+[] Turns
+[] Updating game display
