@@ -1,9 +1,16 @@
+.hidden {
+  display: none;
+}
+
 #game {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto;
   grid-template-areas: ". player-minus-2 player-minus-2. chat" "player-minus-1 draw-pile discard-pile player-minus-3 chat" ". player-current player-current. chat";
+}
+#game.hidden {
+  display: none;
 }
 
 .player {
@@ -15,10 +22,10 @@
   text-align: center;
 }
 .player .player-hand .uno-card {
-  width: 18.8888888889px;
+  width: 28.3333333333px;
 }
 .player .player-hand .uno-card:last-child {
-  width: 56.6666666667px;
+  width: 85px;
 }
 
 .chat {
@@ -64,81 +71,81 @@
 
 .uno-card {
   background-image: url("/images/cards.png");
-  background-size: 857.3333333333px 465.6666666667px;
-  height: 85.6666666667px;
-  width: 56.6666666667px;
+  background-size: 1286px 698.5px;
+  height: 128.5px;
+  width: 85px;
 }
 
-.red {
+.card-color-red {
   background-position-y: -0px;
 }
 
-.blue {
-  background-position-y: -95px;
+.card-color-blue {
+  background-position-y: -142.5px;
 }
 
-.yellow {
-  background-position-y: -190px;
-}
-
-.green {
+.card-color-yellow {
   background-position-y: -285px;
 }
 
-.special {
-  background-position-y: -380px;
+.card-color-green {
+  background-position-y: -427.5px;
 }
 
-.zero {
+.card-color-special {
+  background-position-y: -570px;
+}
+
+.card-type-1 {
   background-position-x: -0px;
 }
 
-.one {
-  background-position-x: -67px;
+.card-type-2 {
+  background-position-x: -100.5px;
 }
 
-.two {
-  background-position-x: -134px;
-}
-
-.three {
+.card-type-3 {
   background-position-x: -201px;
 }
 
-.four {
-  background-position-x: -268px;
+.card-type-4 {
+  background-position-x: -301.5px;
 }
 
-.five {
-  background-position-x: -335px;
-}
-
-.six {
+.card-type-5 {
   background-position-x: -402px;
 }
 
-.seven {
-  background-position-x: -469px;
+.card-type-6 {
+  background-position-x: -502.5px;
 }
 
-.eight {
-  background-position-x: -536px;
-}
-
-.nine {
+.card-type-7 {
   background-position-x: -603px;
 }
 
-.skip {
-  background-position-x: -670px;
+.card-type-8 {
+  background-position-x: -703.5px;
 }
 
-.reverse {
-  background-position-x: -737px;
-}
-
-.draw-two {
+.card-type-9 {
   background-position-x: -804px;
+}
+
+.card-type-10 {
+  background-position-x: -904.5px;
+}
+
+.card-type-11 {
+  background-position-x: -1005px;
+}
+
+.card-type-12 {
+  background-position-x: -1105.5px;
+}
+
+.card-type-13 {
+  background-position-x: -1206px;
 }
 
 /*# sourceMappingURL=main.css.map */

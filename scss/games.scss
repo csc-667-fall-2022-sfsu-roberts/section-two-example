@@ -1,12 +1,16 @@
 @use "sass:list";
 
-$scale: 3;
+$scale: 2;
 $height: calc(257 / $scale);
 $width: calc(170 / $scale);
 $y-padding: calc((286 - 258) / $scale);
 $x-padding: calc((201 - 170) / $scale);
 
+.hidden { display: none; }
+
 #game {
+  &.hidden { display: none; }
+
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -87,14 +91,13 @@ $x-padding: calc((201 - 170) / $scale);
 
 $colors: ("red": 0, "blue": calc($height + $y-padding), "yellow": calc(($height + $y-padding) * 2), "green": calc(($height + $y-padding) * 3), "special": calc(($height + $y-padding) * 4));
 @each $color, $offset in $colors {
-  .#{$color} {
+  .card-color-#{$color} {
     background-position-y: -#{$offset}px;
   }
 }
 
-$cards: ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "skip", "reverse", "draw-two");
 @for $i from 1 through 13 {
-  .#{list.nth($cards, $i)} {
+  .card-type-#{$i} {
     background-position-x: -#{calc(($i - 1) * ($width + $x-padding))}px;
   }
 }

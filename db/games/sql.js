@@ -20,7 +20,7 @@ const INITIALIZE_CARD =
 const GET_DECK = "SELECT * FROM cards";
 
 const USERS_IN_GAME =
-  "SELECT user_id FROM game_users WHERE game_id = ${game_id}";
+  "SELECT user_id, seat, current FROM game_users WHERE game_id = ${game_id}";
 
 module.exports = {
   CREATE_SQL,

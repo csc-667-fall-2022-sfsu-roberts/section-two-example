@@ -2,7 +2,8 @@ const config = {
   entryPoints: ["front-end/games/index.ts"],
   bundle: true,
   outdir: "public/javascripts",
-  minify: true,
+  // minify: true,
+  watch: true,
 };
 
 if (process.env.NODE_ENV === "development") {

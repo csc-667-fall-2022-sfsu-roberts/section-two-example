@@ -1,30 +1,18 @@
 const Games = require("../db/games");
+const status = require("./status");
+
+const debug = (msg) => (result) => {
+  console.log(msg, result);
+  return result;
+};
 
 const startGame = (game_id, io) => {
-  // Decide who's going first
-  Games.setPlayerOrder(game_id)
-    .then((seats /* array of user ids */) => {
-      // first entry in seats array is current player
+  return Games.start(game_id)
+    .then(debug("After start in startGame"))
+    .then(() => {
+      io.emit(`games:${game_id}:start`, {});
     })
-    .then((player_ids) => {
-      // Deal player hands
-      // Game_cards, set the user_id for 7 cards to each user_id
-    })
-    .then((player_hands) => {
-      // Broadcast the game state (different for each user)
-      io.emit(`game:${game_id}:start`, {
-        game: {
-          user_id,
-          game_id,
-          hand,
-          other_players: {
-            // Show the number of cards in other player's hands
-          },
-          is_current,
-          discard_card,
-        },
-      });
-    });
+    .then(() => status(game_id, io));
 };
 
 module.exports = startGame;

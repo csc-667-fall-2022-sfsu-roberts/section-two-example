@@ -23,4 +23,12 @@ Task list:
 12-8
 
 [] Turns
-[] Updating game display
+
+- [] All users have joined the game (init game)
+- [] Play a card to the discard pile
+- [] Draw a card
+- [] Updating game display
+
+[] Ending a game
+
+- [] When someone has zero cards

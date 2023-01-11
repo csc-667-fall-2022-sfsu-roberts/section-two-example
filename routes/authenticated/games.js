@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const Games = require("../../db/games");
-const startGame = require("../../game-logic/start-game");
-const { PLAYERS_NEEDED, EVENTS } = require("../../config/games");
+const { PLAYERS_NEEDED } = require("../../config/games");
+const GameLogic = require("../../game-logic");
 
 router.post("/create", (request, response) => {
   const { user_id } = request.session;
@@ -19,12 +19,34 @@ router.post("/create", (request, response) => {
     });
 });
 
+router.post("/:id/info", (request, response) => {
+  const { id: game_id } = request.params;
+
+  response.json({ game_id });
+});
+
+router.post("/:id/status", (request, response) => {
+  const { id: game_id } = request.params;
+
+  GameLogic.status(game_id, request.app.io);
+
+  response.status(200).send();
+});
+
 router.post("/:id/join", (request, response) => {
   const { id: game_id } = request.params;
   const { user_id } = request.session;
 
   Games.join(game_id, user_id)
-    .then(({ user_ids, count }) => {
+    .then(({ count }) => {
+      if (count === PLAYERS_NEEDED) {
+        console.log("STARTING GAME");
+        return GameLogic.startGame(game_id, request.app.io);
+      } else {
+        return Promise.resolve();
+      }
+    })
+    .then(() => {
       response.redirect(`/games/${game_id}`);
     })
     .catch((error) => {
@@ -86,10 +108,6 @@ router.get("/:id", (request, response) => {
         start_count: PLAYERS_NEEDED,
         starting: PLAYERS_NEEDED === count,
       });
-
-      if (count === PLAYERS_NEEDED) {
-        startGame(id, request.app.io);
-      }
     })
     .catch((error) => {
       console.log(error);

@@ -2,6 +2,13 @@ import io from "socket.io-client";
 
 const gameSocket = io();
 
-gameSocket.on("game:init", ({ type, game_id, user_id }) => {
-  console.log("Game event received", { type, game_id, user_id });
-});
+console.log("Games js loaded");
+
+fetch(`${window.location.pathname}/info`, { method: "post" })
+  .then((result) => result.json())
+  .then(({ game_id }) => {
+    console.log("Posted to info; ", { game_id });
+  })
+  .catch((error) => console.log(error));
+
+console.log("After Games js loaded");

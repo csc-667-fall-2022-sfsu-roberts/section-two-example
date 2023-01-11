@@ -1,58 +1,30 @@
 extends layout
 
 block content
-  #waiting-message.row
+  #waiting-message.row(class=starting ? "hidden" : "")
     .col
       .text-center
         .spinner-border(role="status")
         p Waiting for all users to join #{joined_count} out of #{start_count}
-  #game.hidden
+  #game(class=starting ? "" : "hidden")
     .player.player-minus-2
-      .username User -2
+      .username
       .player-hand
-          .uno-card.special.zero
-          .uno-card.special.zero
-          .uno-card.special.zero
-          .uno-card.special.zero
-          .uno-card.special.zero
-          .uno-card.special.zero
-          .uno-card.special.zero
     .player.player-minus-1
-      .username User -1
+      .username
       .player-hand
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
     .draw-pile
-      .uno-card.special.zero
+      .uno-card.card-color-special.card-type-0
     .discard-pile
-      .uno-card.red.five
     .player.player-minus-3
       .player-hand
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
-        .uno-card.special.zero
-      .username User -3
+      .username
     .player.player-current
-      .username Current user
+      .username
       .player-hand
-        .uno-card.special.one
-        .uno-card.blue.three
-        .uno-card.blue.seven
-        .uno-card.red.two
-        .uno-card.green.four
-        .uno-card.green.nine
-        .uno-card.green.twelve
     .chat
       p Chat
 
 block scripts
+  script(src="/javascripts/socket.js")
   script(src="/javascripts/games.js")
